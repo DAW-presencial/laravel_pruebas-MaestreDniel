@@ -56,3 +56,10 @@ Route::view('bienvenido', 'portfolio'); // En este caso necesitaremos una vista 
 // Con controladores. Hay que ir a app/controllers y crear la clase BorrarController, hay distintas maneras de hacerlo
 
 Route::get('/bienvenido', [BorrarController::class]);
+
+Route::get('/{locale?}/formulariolangs', function ($locale = null) {
+    if (isset($locale) && in_array($locale, config('app.available_locales'))) {
+        app()->setLocale($locale);
+    }
+    return view('formulariolangs');
+});
