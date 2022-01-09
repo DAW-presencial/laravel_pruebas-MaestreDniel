@@ -11,16 +11,15 @@
         } */
 
         public function __set($publico, $value) {
-            echo "Setting '$publico' to '$value'\n";
+            echo "Setting '$publico' to '$value'<br>";
             $this->data[$publico] = $value;
         }
 
-        /* public function __get($publico) {
+         public function __get($publico) {
             echo "Getting '$publico'\n";
-            if (array_key_exists($publico, $this->data)) {
-                return $this->data[$publico];
-            }
-        } */
+            //return $this->data[$publico];
+        }
+        
 
         /* public function __get($protegido) {
             echo "Imprimo: $protegido";
