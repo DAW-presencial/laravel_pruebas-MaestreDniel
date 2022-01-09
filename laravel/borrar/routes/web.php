@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\Ejemplo3Controller;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BorrarController; // Para llamar a BorrarController.php
+use App\Http\Controllers\EjemploController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,13 +54,32 @@ Route::view('bienvenido', 'portfolio'); // En este caso necesitaremos una vista 
     return view('portfolio', ['name' => $name]);
 }); */
 
-// Con controladores. Hay que ir a app/controllers y crear la clase BorrarController, hay distintas maneras de hacerlo
-
-Route::get('/bienvenido', [BorrarController::class]);
-
 Route::get('/{locale?}/formulariolangs', function ($locale = null) {
     if (isset($locale) && in_array($locale, config('app.available_locales'))) {
         app()->setLocale($locale);
     }
     return view('formulariolangs');
 });
+
+/* Route::get('/post/{id}', function($id) {
+    return "Este es el post nº " . $id;
+}); // Aquí se pasa un parámetro a la url de forma sencilla */
+
+Route::get('/post/{id}/{nombre}', function($id, $nombre) {
+    return "Este es el post nº " . $id . " creado por " . $nombre;
+})->where('nombre','[A-Za-z]+'); 
+// Aquí se pasa más un parámetro a la url y además, ponemos una regexp al nombre para filtrar los input del usuario
+
+/**
+ * Rutas con controladores. No funciona igual que en versiones anteriores de Laravel 
+ * Necesitamos indicar el nombre de nuestro controlador seguido de ::class
+ * y además como parámetro añadir el nombre del método que nos interesa
+ * IMPORTANTE: Para poder llamar bien a los controladores, tienes que importarlos al principio
+ * de todo con use (mira las primeras líneas de este código). Si no, te dirá que no existen.
+ * Si tabulas el nombre de la clase controller con el IDE es probable que lo importe automáticamente,
+ * si copias y pegas líneas de código es posible que no lo haga.
+ */
+
+Route::get('/inicio', [EjemploController::class, 'inicio']);
+
+Route::get('/iniciooo', [Ejemplo3Controller::class, 'index']);
