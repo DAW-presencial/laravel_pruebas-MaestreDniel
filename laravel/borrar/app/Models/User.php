@@ -16,6 +16,10 @@ class User extends Authenticatable
      * The attributes that are mass assignable.
      *
      * @var string[]
+     *
+     * Fillable es: listado de campos a rellenar en la tabla en asignacion masiva
+     * si en la request recibe + campos no los tendrá en cuenta. Esto es necesario
+     * porque en la request está el token y este dato no se inserta en la db lo que provoca un error
      */
     protected $fillable = [
         'name',
@@ -41,4 +45,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * En caso de que tengamos un formulario con muchos campos, se podría utilizar la siguiente propiedad 
+     * para indicar los campos protegidos, que no deben insertarse en db, es lo contrario a $fillable.
+     */
+    protected $guarded = [];
 }

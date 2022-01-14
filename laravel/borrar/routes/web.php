@@ -3,6 +3,8 @@
 use App\Http\Controllers\Ejemplo3Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EjemploController;
+use App\Http\Controllers\PaginasController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +17,9 @@ use App\Http\Controllers\EjemploController;
 |
 */
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('welcome');
-});
+}); */
 
 Route::get('testview', function () {
     return view('portfolio'); // Podemos crear vistas en resources/views. Estas vistas usan la extensión blade.php
@@ -37,6 +39,10 @@ Route::get('agenda', function () {
 
 Route::get('contador', function () {
     return view('contadorvisit');
+});
+
+Route::get('agendabbdd', function () {
+    return view('agendabbdd');
 });
 
 /**
@@ -61,6 +67,8 @@ Route::get('/{locale?}/formulariolangs', function ($locale = null) {
     return view('formulariolangs');
 });
 
+
+
 /* Route::get('/post/{id}', function($id) {
     return "Este es el post nº " . $id;
 }); // Aquí se pasa un parámetro a la url de forma sencilla */
@@ -82,4 +90,13 @@ Route::get('/post/{id}/{nombre}', function($id, $nombre) {
 
 Route::get('/inicio', [EjemploController::class, 'inicio']);
 
-Route::get('/iniciooo', [Ejemplo3Controller::class, 'index']);
+Route::get('/iniciooo/{id}', [Ejemplo3Controller::class, 'index']); 
+// Como estamos pasando un parámetro, tendremos que preparar al controlador para que pueda recibir esa información
+
+Route::get('/', [PaginasController::class, 'inicio']);
+/* Route::get('/inicio', [PaginasController::class, 'inicio']);
+Route::get('/quienessomos', [PaginasController::class, 'quienesSomos']);
+Route::get('/dondeestamos', [PaginasController::class, 'dondeEstamos']);
+Route::get('/foro', [PaginasController::class, 'foro']); */
+
+Route::resource("posts", PostController::class);

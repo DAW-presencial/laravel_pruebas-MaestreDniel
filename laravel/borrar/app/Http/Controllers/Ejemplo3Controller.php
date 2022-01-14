@@ -11,10 +11,9 @@ class Ejemplo3Controller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index() // Añadimos el parámetro que pasamos por la route
     {
-        return "Estamos en la página de inicio y estamos aprovechando 
-        un controller creado con php artisan make:controller --resource";
+        return "Estamos en la página de inicio";
     }
 
     /**
@@ -24,7 +23,7 @@ class Ejemplo3Controller extends Controller
      */
     public function create()
     {
-        //
+        return "Estamos en el método create()";
     }
 
     /**
@@ -57,7 +56,7 @@ class Ejemplo3Controller extends Controller
      */
     public function edit($id)
     {
-        //
+        return "Estás en el método edit con el parámetro " . $id;
     }
 
     /**
