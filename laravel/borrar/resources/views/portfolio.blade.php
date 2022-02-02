@@ -1,15 +1,17 @@
 @extends('layout')
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    @section('content')
-    holasoyunsection
-    @endsection
-</body>
-</html>
+
+@section('title', 'Portfolio')
+
+@section('content')
+<h2>Estás en portfolio</h2>
+
+<ul>
+  @if($portfolio) {{-- Podríamos poner @isset para jugar con si la variable está definida o no --}}
+    @foreach ($portfolio as $portfolioItem) {{-- En vez de @foreach podríamos usar @forelse --}}
+      <li> {{ $portfolioItem['title'] }} </li> <!-- Cogerá el valor de cada clave 'title', es decir, el proyecto #num -->
+    @endforeach
+  @else
+    <li>No hay proyectos disponibles</li>
+  @endif
+</ul>
+@endsection

@@ -43,5 +43,9 @@
     "Phone": "Teléfono",
     "Send": "Enviar",
     "Contacts": "Contactos",
-    "This schedule does not have any contact": "Esta agenda no tiene ningún contacto"
+    "This schedule does not have any contact": "Esta agenda no tiene ningún contacto",
+    "Contact": "Contacto",
+    "Home": "Inicio",
+    "Our location": "Dónde estamos",
+    "About us": "Quiénes somos"
 }
