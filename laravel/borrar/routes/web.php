@@ -129,8 +129,8 @@ Route::get('/', function () {
 })->name('home'); */
 
 // App::setLocale('en');
-// Route::view('/', 'home', ['nombre' => 'Daniel Maestre'])->name('home');
-Route::view('/', 'home')->name('home');
+Route::view('/', 'home', ['nombre' => 'Daniel Maestre'])->name('home');
+// Route::view('/', 'home')->name('home');
 Route::view('/dondeestamos', 'dondeestamos')->name('dondeestamos');
 Route::view('/quienessomos', 'quienessomos')->name('quienessomos');
 Route::view('/contacto', 'contacto')->name('contacto');
